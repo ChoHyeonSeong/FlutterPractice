@@ -6,13 +6,22 @@ void main() {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.black,
-        body: Center(
-          child: Text(
-            'Code Factory',
-            style: TextStyle(
-              color: Colors.white,
+        body: Column(
+          children: [
+            Row(
+              children: [
+                Text('1'),
+                Text('2'),
+              ],
             ),
-          ),
+            Row(
+              children: [
+                Text('3'),
+                Text('4'),
+                Text('5'),
+              ],
+            ),
+          ],
         ),
       ),
     ),
