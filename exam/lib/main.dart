@@ -5,21 +5,15 @@ void main() {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xFF65afc9),
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              children: [
-                Text('1'),
-                Text('2'),
-              ],
+            Image.asset(
+              'asset/img/logo.png',
             ),
-            Row(
-              children: [
-                Text('3'),
-                Text('4'),
-                Text('5'),
-              ],
+            CircularProgressIndicator(
+              color: Colors.white,
             ),
           ],
         ),
