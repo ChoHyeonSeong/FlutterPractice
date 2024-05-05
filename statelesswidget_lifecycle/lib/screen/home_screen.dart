@@ -9,6 +9,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool show = false;
+  Color color = Colors.lightGreen;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,19 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (show) WasabiWidget(),
+            if (show)
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    color = color == Colors.lightGreen
+                        ? Colors.deepPurpleAccent
+                        : Colors.lightGreen;
+                  });
+                },
+                child: WasabiWidget(
+                  color: color,
+                ),
+              ),
             SizedBox(height: 32.0),
             ElevatedButton(
               onPressed: () {
@@ -36,7 +49,12 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class WasabiWidget extends StatefulWidget {
-  WasabiWidget({super.key}){
+  final Color color;
+
+  WasabiWidget({
+    super.key,
+    required this.color,
+  }) {
     print('1) Stateful Widget constructor');
   }
 
@@ -60,11 +78,17 @@ class _WasabiWidgetState extends State<WasabiWidget> {
     print('4) Stateful Widget didChangeDependencies');
     super.didChangeDependencies();
   }
+
   @override
   Widget build(BuildContext context) {
     print('5) Stateful Widget build');
-    return Container(width: 50.0, height: 50.0, color: Colors.lightGreen);
+    return Container(
+      width: 50.0,
+      height: 50.0,
+      color: widget.color,
+    );
   }
+
   @override
   void deactivate() {
     print('6) Stateful Widget deactivate');
